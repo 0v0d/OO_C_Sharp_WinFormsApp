@@ -18,7 +18,7 @@ namespace OO_C_Sharp_WinFormsApp
             /*
              * システム起動時のフォーム
              */
-            Application.Run(new People());
+            Application.Run(new RegisteredUserList());
 
         }
 

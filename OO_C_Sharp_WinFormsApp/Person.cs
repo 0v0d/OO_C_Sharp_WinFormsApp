@@ -95,6 +95,39 @@ namespace OO_C_Sharp_WinFormsApp
         private Image image;
 
         /// <summary>
+        /// デフォルトのコンストラクタです。
+        /// </summary>
+        public PersonModel()
+        {
+
+            /*
+             * ID
+             */
+            addId(0);
+
+            /*
+             * 姓
+             */
+            addFamilyName("");
+
+            /*
+             * 名
+             */
+            addName("");
+
+            /*
+             * 誕生日
+             */
+            addBirthday(DateTime.Today);
+
+            /*
+             * イメージ
+             */
+            addImage(Properties.Resources.noImage_60x80);
+
+        }
+
+        /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="id"></param>
@@ -154,7 +187,7 @@ namespace OO_C_Sharp_WinFormsApp
 
         }
 
-        public String getFamilyName()
+        public virtual String getFamilyName()
         {
 
             return familyName;
@@ -239,7 +272,7 @@ namespace OO_C_Sharp_WinFormsApp
 
         }
 
-        public Image getImage()
+        public virtual Image getImage()
         {
 
             return image;
@@ -261,12 +294,12 @@ namespace OO_C_Sharp_WinFormsApp
 
     }
 
-    public class NullPerson : PersonModel
+    public class NullPerson : PersonModel, NullObject
     {
 
         private static Person person = new NullPerson();
 
-        private NullPerson() : base(0, "", "", 1, 1, 1, Properties.Resources.noImage_60x80)
+        private NullPerson()
         {
 
             /*
@@ -326,6 +359,181 @@ namespace OO_C_Sharp_WinFormsApp
 
         public override Person addImage(Image image)
         {
+
+            return this;
+
+        }
+
+    }
+
+    public class ExtendedPerson : PersonModel
+    {
+
+        private List<Family> historyOfFamily = new List<Family>();
+        private Visual visual = NullVisual.get();
+
+        public ExtendedPerson()
+        {
+
+        }
+
+        public ExtendedPerson(int id, Family family, String name, DateTime birthday, Visual visual)
+        {
+
+            /*
+             * ID
+             */
+            addId(id);
+
+            /*
+             * 姓
+             */
+            addFamily(family);
+
+            /*
+             * 名
+             */
+            addName(name);
+
+            /*
+             * 誕生日
+             */
+            addBirthday(birthday);
+
+            /*
+             * イメージ
+             */
+            addVisual(visual);
+
+        }
+
+        public ExtendedPerson(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
+            : base(id, familyName, name, yearOfBirth, monthOfBirth, dayOfBirth, image)
+        {
+
+        }
+
+        public override String getFamilyName()
+        {
+
+            return getFamily().getName();
+
+        }
+
+        public override Person addFamilyName(String familyName)
+        {
+
+            Debug.Assert(familyName != null);
+
+            if (familyName.Equals(NullFamily.get().getName()))
+            {
+
+                Debug.Assert(getFamily() is NullObject);
+
+            }
+            else
+            {
+
+                addFamily(new FamilyModel(0, familyName));
+
+                Debug.Assert(getFamily() is not NullObject);
+
+            }
+
+            return this;
+
+        }
+
+        public Family getFamily()
+        {
+
+            if (historyOfFamily.Count > 0)
+            {
+
+                return historyOfFamily.Last();
+
+            }
+
+            return NullFamily.get();
+
+        }
+
+        public Person addFamily(Family family)
+        {
+
+            Debug.Assert(family != null);
+
+            /*
+             * 家族にふさわしいかどうかを決めることができる
+             */
+            if (family is not NullObject)
+            {
+
+                historyOfFamily.Add(family.addPerson(this));
+
+                Debug.Assert(getFamily().Equals(family));
+
+            }
+
+            return this;
+
+        }
+
+        public override Image getImage()
+        {
+
+            return getVisual().getImage();
+
+        }
+
+        public override Person addImage(Image image)
+        {
+
+            Debug.Assert(image != null);
+
+            if (image.Equals(NullVisual.get().getImage()))
+            {
+
+                Debug.Assert(getVisual() is NullObject);
+
+            }
+            else
+            {
+
+                addVisual(new VisualModel(0, image));
+
+                Debug.Assert(getVisual() is not NullObject);
+
+            }
+
+            return this;
+
+        }
+
+        public Visual getVisual()
+        {
+
+            return visual;
+
+        }
+
+        public Person addVisual(Visual visual)
+        {
+
+            Debug.Assert(visual != null);
+
+            /*
+             * イメージ通りかどうかを決めることができる
+             * 
+             */
+            if (visual is not NullObject)
+            {
+
+                this.visual = visual.addPerson(this);
+
+                Debug.Assert(getVisual().Equals(visual));
+
+            }
 
             return this;
 

@@ -334,7 +334,7 @@ namespace OO_C_Sharp_WinFormsApp
 
             PictureBox pictureBox = new PictureBox();
 
-            ((System.ComponentModel.ISupportInitialize) pictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
 
             pictureBox.BorderStyle = BorderStyle.Fixed3D;
             pictureBox.Location = new Point(310, 30);
@@ -343,7 +343,7 @@ namespace OO_C_Sharp_WinFormsApp
             pictureBox.TabStop = false;
             pictureBox.Image = person.getImage();
 
-            ((System.ComponentModel.ISupportInitialize) pictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
 
             return pictureBox;
 
