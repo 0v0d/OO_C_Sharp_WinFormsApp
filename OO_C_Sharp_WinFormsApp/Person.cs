@@ -424,19 +424,14 @@ namespace OO_C_Sharp_WinFormsApp
         {
 
             Debug.Assert(familyName != null);
-
-            if (familyName.Equals(NullFamily.get().getName()))
+            
+            if (familyName.Length > 0)
             {
 
-                Debug.Assert(getFamily() is NullObject);
-
-            }
-            else
-            {
-
-                addFamily(new FamilyModel(0, familyName));
+                addFamily(new FamilyModel(familyName));
 
                 Debug.Assert(getFamily() is not NullObject);
+                Debug.Assert(getFamilyName().Equals(familyName));
 
             }
 
@@ -450,6 +445,7 @@ namespace OO_C_Sharp_WinFormsApp
             if (historyOfFamily.Count > 0)
             {
 
+                // 最新の家族を返す
                 return historyOfFamily.Last();
 
             }
@@ -491,20 +487,10 @@ namespace OO_C_Sharp_WinFormsApp
 
             Debug.Assert(image != null);
 
-            if (image.Equals(NullVisual.get().getImage()))
-            {
+            addVisual(new VisualModel(image));
 
-                Debug.Assert(getVisual() is NullObject);
-
-            }
-            else
-            {
-
-                addVisual(new VisualModel(0, image));
-
-                Debug.Assert(getVisual() is not NullObject);
-
-            }
+            Debug.Assert(getVisual() is not NullObject);
+            Debug.Assert(getImage().Equals(image));
 
             return this;
 

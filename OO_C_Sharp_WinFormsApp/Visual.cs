@@ -44,6 +44,24 @@ namespace OO_C_Sharp_WinFormsApp
 
         }
 
+        /// <summary>
+        /// 新規作成用のコンストラクタです。
+        /// </summary>
+        /// <param name="image"></param>
+        public VisualModel(Image image)
+        {
+
+            addId(0);
+
+            addImage(image);
+
+        }
+
+        /// <summary>
+        /// 既存データ用のコンストラクタです。
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="image"></param>
         public VisualModel(int id, Image image)
         {
 

@@ -44,6 +44,24 @@ namespace OO_C_Sharp_WinFormsApp
 
         }
 
+        /// <summary>
+        /// 新規作成用のコンストラクタです。
+        /// </summary>
+        /// <param name="name"></param>
+        public FamilyModel(String name)
+        {
+
+            addId(0);
+
+            addName(name);
+
+        }
+
+        /// <summary>
+        /// 既存データ用のコンストラクタです。
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public FamilyModel(int id, String name)
         {
 

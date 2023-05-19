@@ -31,14 +31,14 @@ namespace OO_C_Sharp_WinFormsApp
              * ID
              */
             Controls.Add(createIdLabel());
-            Controls.Add(createId());
+            Controls.Add(createId(person));
 
             /*
              * 姓
              */
             Controls.Add(createFamilyNameLabel());
             Controls.Add(createFamilyName());
-            Controls.Add(createFamilyNameTextBox(tabIndex++));
+            Controls.Add(createFamilyNameTextBox(person, tabIndex++));
 
             /*
              * 名
@@ -129,17 +129,12 @@ namespace OO_C_Sharp_WinFormsApp
         /// id
         /// </summary>
         /// <returns></returns>
-        private Label createId()
+        private Label createId(Person person)
         {
 
-            Label label = new Label();
+            Label label = new PersonIdLabel(person).setLocation(100, 30);
 
-            label.AutoSize = true;
-            label.Location = new Point(100, 30);
-            label.Name = "id";
             label.Size = new Size(38, 15);
-            label.TabStop = false;
-            label.Text = person.getId().ToString();
 
             return label;
 
@@ -190,16 +185,13 @@ namespace OO_C_Sharp_WinFormsApp
         /// </summary>
         /// <param name="tabIndex"></param>
         /// <returns></returns>
-        private TextBox createFamilyNameTextBox(int tabIndex)
+        private TextBox createFamilyNameTextBox(Person person, int tabIndex)
         {
 
-            TextBox textBox = new TextBox();
+            TextBox textBox = new FamilyNameTextBox(person).setLocation(170, 58);
 
-            textBox.Location = new Point(170, 58);
-            textBox.Name = "familyNameTextBox";
             textBox.Size = new Size(100, 23);
             textBox.TabIndex = tabIndex;
-            textBox.Text = person.getFamilyName();
 
             return textBox;
 
@@ -250,10 +242,10 @@ namespace OO_C_Sharp_WinFormsApp
         /// </summary>
         /// <param name="tabIndex"></param>
         /// <returns></returns>
-        private TextBox createNameTextBox(int tabIndex)
+        private System.Windows.Forms.TextBox createNameTextBox(int tabIndex)
         {
 
-            TextBox textBox = new TextBox();
+            System.Windows.Forms.TextBox textBox = new System.Windows.Forms.TextBox();
 
             textBox.Location = new Point(170, 88);
             textBox.Name = "nameTextBox";
@@ -334,7 +326,7 @@ namespace OO_C_Sharp_WinFormsApp
 
             PictureBox pictureBox = new PictureBox();
 
-            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) pictureBox).BeginInit();
 
             pictureBox.BorderStyle = BorderStyle.Fixed3D;
             pictureBox.Location = new Point(310, 30);
@@ -343,7 +335,7 @@ namespace OO_C_Sharp_WinFormsApp
             pictureBox.TabStop = false;
             pictureBox.Image = person.getImage();
 
-            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize) pictureBox).EndInit();
 
             return pictureBox;
 

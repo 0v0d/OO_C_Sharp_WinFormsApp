@@ -1,14 +1,18 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace OO_C_Sharp_WinFormsApp
 {
 
+    /// <summary>
+    /// ìoò^çœÇ›óòópé“
+    /// </summary>
     public partial class RegisteredUserList : Form
     {
 
         private PersonDataBase userList = PersonDataBase.get();
-        
+
         public RegisteredUserList()
         {
 
@@ -34,9 +38,9 @@ namespace OO_C_Sharp_WinFormsApp
         private void method4Test()
         {
 
-//            userList.save(NullPerson.get());
+            userList.save(NullPerson.get());
 
-//            removeAll();
+            userList.removeAll();
 
         }
 
@@ -138,6 +142,28 @@ namespace OO_C_Sharp_WinFormsApp
                 Controls.RemoveAt(removeCount);
 
             }
+
+            return this;
+
+        }
+
+        public RegisteredUserList save(PersonPlaceRegister personPlaceRegister)
+        {
+
+            Debug.Assert(personPlaceRegister != null);
+
+            userList.save(personPlaceRegister.getPerson());
+
+            return this;
+
+        }
+
+        public RegisteredUserList saveTemporary(PersonPlaceRegister personPlaceRegister)
+        {
+
+            Debug.Assert(personPlaceRegister != null);
+
+            // Å¶àÍéûï€ë∂ÇÕñ¢é¿ëï
 
             return this;
 

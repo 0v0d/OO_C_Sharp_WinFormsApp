@@ -18,7 +18,7 @@ namespace OO_C_Sharp_WinFormsApp
             /*
              * システム起動時のフォーム
              */
-            Application.Run(new RegisteredUserList());
+            Application.Run(new Library(1, "バーチャル図書館"));
 
         }
 
