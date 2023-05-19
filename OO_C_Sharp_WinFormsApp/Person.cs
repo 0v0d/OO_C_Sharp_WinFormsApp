@@ -8,237 +8,329 @@ using System.Threading.Tasks;
 namespace OO_C_Sharp_WinFormsApp
 {
 
-	public interface Person
-	{
-
-		/// <summary>
-		/// IDを返します。
-		/// </summary>
-		/// <returns></returns>
-		int getId();
-
-		/// <summary>
-		/// 姓を返します。
-		/// </summary>
-		/// <returns></returns>
-		String getFamilyName();
-
-		Person addFamilyName(String familyName);
-
-		/// <summary>
-		/// 名を返します。
-		/// </summary>
-		/// <returns></returns>
-		String getName();
-
-		Person addName(String name);
-
-		/// <summary>
-		/// フルネームを返します。
-		/// </summary>
-		/// <returns></returns>
-		String fullName();
-
-		/// <summary>
-		/// 誕生日を返します。
-		/// </summary>
-		/// <returns></returns>
-		DateTime getBirthday();
-
-		Person addBirthday(DateTime birthday);
-
-		/// <summary>
-		/// 年齢を返します。
-		/// </summary>
-		/// <returns></returns>
-		int age();
-
-		/// <summary>
-		/// イメージを返します。
-		/// </summary>
-		/// <returns></returns>
-		Image getImage();
-
-		Person addImage(Image image);
-
-	}
-
-	/// <summary>
-	/// 単一責務な『人』オブジェクトです。
-	/// </summary>
-	public class PersonModel : Person
-	{
+    public interface Person
+    {
+
+        /// <summary>
+        /// IDを返します。
+        /// </summary>
+        /// <returns></returns>
+        int getId();
+
+        /// <summary>
+        /// 姓を返します。
+        /// </summary>
+        /// <returns></returns>
+        String getFamilyName();
+
+        Person addFamilyName(String familyName);
+
+        /// <summary>
+        /// 名を返します。
+        /// </summary>
+        /// <returns></returns>
+        String getName();
+
+        Person addName(String name);
+
+        /// <summary>
+        /// フルネームを返します。
+        /// </summary>
+        /// <returns></returns>
+        String fullName();
+
+        /// <summary>
+        /// 誕生日を返します。
+        /// </summary>
+        /// <returns></returns>
+        DateTime getBirthday();
+
+        Person addBirthday(DateTime birthday);
+
+        /// <summary>
+        /// 年齢を返します。
+        /// </summary>
+        /// <returns></returns>
+        int age();
+
+        /// <summary>
+        /// イメージを返します。
+        /// </summary>
+        /// <returns></returns>
+        Image getImage();
+
+        Person addImage(Image image);
+
+    }
+
+    /// <summary>
+    /// 単一責務な『人』オブジェクトです。
+    /// </summary>
+    public class PersonModel : Person
+    {
 
-		/// <summary>
-		/// ID
-		/// </summary>
-		private int id;
+        /// <summary>
+        /// ID
+        /// </summary>
+        private int id;
 
-		/// <summary>
-		/// 姓
-		/// </summary>
-		private String familyName;
+        /// <summary>
+        /// 姓
+        /// </summary>
+        private String familyName;
 
-		/// <summary>
-		/// 名
-		/// </summary>
-		private String name;
+        /// <summary>
+        /// 名
+        /// </summary>
+        private String name;
 
-		/// <summary>
-		/// 誕生日
-		/// </summary>
-		private DateTime birthday;
+        /// <summary>
+        /// 誕生日
+        /// </summary>
+        private DateTime birthday;
 
-		/// <summary>
-		/// イメージ
-		/// </summary>
-		private Image image;
+        /// <summary>
+        /// イメージ
+        /// </summary>
+        private Image image;
 
-		/// <summary>
-		/// コンストラクタです。
-		/// </summary>
-		/// <param name="id"></param>
-		/// <param name="familyName"></param>
-		/// <param name="name"></param>
-		/// <param name="yearOfBirth"></param>
-		/// <param name="monthOfBirth"></param>
-		/// <param name="dayOfBirth"></param>
-		/// <param name="image"></param>
-		public PersonModel(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
-		{
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="familyName"></param>
+        /// <param name="name"></param>
+        /// <param name="yearOfBirth"></param>
+        /// <param name="monthOfBirth"></param>
+        /// <param name="dayOfBirth"></param>
+        /// <param name="image"></param>
+        public PersonModel(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
+        {
 
-			/*
-			 * ID
-			 */
-			addId(id);
+            /*
+             * ID
+             */
+            addId(id);
 
-			/*
-			 * 姓
-			 */
-			addFamilyName(familyName);
+            /*
+             * 姓
+             */
+            addFamilyName(familyName);
 
-			/*
-			 * 名
-			 */
-			addName(name);
+            /*
+             * 名
+             */
+            addName(name);
 
-			/*
-			 * 誕生日
-			 */
-			addBirthday(new DateTime(yearOfBirth, monthOfBirth, dayOfBirth, 0, 0, 0));
+            /*
+             * 誕生日
+             */
+            addBirthday(new DateTime(yearOfBirth, monthOfBirth, dayOfBirth, 0, 0, 0));
 
-			/*
-			 * イメージ
-			 */
-			addImage(image);
+            /*
+             * イメージ
+             */
+            addImage(image);
 
-		}
+        }
 
-		public int getId()
-		{
+        public int getId()
+        {
 
-			return id;
+            return id;
 
-		}
+        }
 
-		public Person addId(int id)
-		{
+        public Person addId(int id)
+        {
 
-			this.id = id;
+            Debug.Assert(id >= 0);
 
-			return this;
+            this.id = id;
 
-		}
+            Debug.Assert(this.id >= 0);
 
-		public String getFamilyName()
-		{
+            return this;
 
-			return familyName;
+        }
 
-		}
+        public String getFamilyName()
+        {
 
-		public Person addFamilyName(String familyName)
-		{
+            return familyName;
 
-			this.familyName = familyName;
+        }
 
-			return this;
+        public virtual Person addFamilyName(String familyName)
+        {
 
-		}
+            Debug.Assert(familyName != null);
 
-		public String getName()
-		{
+            this.familyName = familyName;
 
-			return name;
+            Debug.Assert(this.familyName != null);
 
-		}
+            return this;
 
-		public Person addName(String name)
-		{
+        }
 
-			this.name = name;
+        public String getName()
+        {
 
-			return this;
+            return name;
 
-		}
+        }
 
-		public String fullName()
-		{
+        public virtual Person addName(String name)
+        {
 
-			return getFamilyName() + " " + getName();
+            Debug.Assert(name != null);
 
-		}
+            this.name = name;
 
-		public DateTime getBirthday()
-		{
+            Debug.Assert(this.name != null);
 
-			return birthday;
+            return this;
 
-		}
+        }
 
-		public Person addBirthday(DateTime birthday)
-		{
+        public String fullName()
+        {
 
-			this.birthday = birthday;
+            return getFamilyName() + " " + getName();
 
-			return this;
+        }
 
-		}
+        public DateTime getBirthday()
+        {
 
-		public int age()
-		{
+            return birthday;
 
-			int age = DateTime.Today.Year - getBirthday().Year;
+        }
 
-			// 誕生日前であれば年齢から 1 を引く
-			if (DateTime.Today.Month.CompareTo(getBirthday().Month) < 0
-					|| DateTime.Today.Month.Equals(getBirthday().Month) && DateTime.Today.Day.CompareTo(getBirthday().Day) < 0)
-			{
+        public virtual Person addBirthday(DateTime birthday)
+        {
 
-				age--;
+            Debug.Assert(birthday != null);
 
-			}
+            this.birthday = birthday;
 
-			return age;
+            Debug.Assert(this.birthday != null);
 
-		}
+            return this;
 
-		public Image getImage()
-		{
+        }
 
-			return image;
+        public int age()
+        {
 
-		}
+            int age = DateTime.Today.Year - getBirthday().Year;
 
-		public Person addImage(Image image)
-		{
+            // 誕生日前であれば年齢から 1 を引く
+            if (DateTime.Today.Month.CompareTo(getBirthday().Month) < 0
+                || DateTime.Today.Month.Equals(getBirthday().Month) && DateTime.Today.Day.CompareTo(getBirthday().Day) < 0)
+            {
 
-			this.image = image;
+                age--;
 
-			return this;
+            }
 
-		}
+            return age;
 
-	}
+        }
+
+        public Image getImage()
+        {
+
+            return image;
+
+        }
+
+        public virtual Person addImage(Image image)
+        {
+
+            Debug.Assert(image != null);
+
+            this.image = image;
+
+            Debug.Assert(this.image != null);
+
+            return this;
+
+        }
+
+    }
+
+    public class NullPerson : PersonModel
+    {
+
+        private static Person person = new NullPerson();
+
+        private NullPerson() : base(0, "", "", 1, 1, 1, Properties.Resources.noImage_60x80)
+        {
+
+            /*
+             * スーパークラスの値追加メソッドがオーバーライドされているため、
+             * 直接スーパークラスのメソッドを発効する。
+             */
+
+            /*
+             * 姓
+             */
+            base.addFamilyName("");
+
+            /*
+             * 名
+             */
+            base.addName("");
+
+            /*
+             * 誕生日
+             */
+            base.addBirthday(DateTime.Today);
+
+            /*
+             * イメージ
+             */
+            base.addImage(Properties.Resources.noImage_60x80);
+
+        }
+
+        public static Person get()
+        {
+
+            return person;
+
+        }
+
+        public override Person addFamilyName(String familyName)
+        {
+
+            return this;
+
+        }
+
+        public override Person addName(String name)
+        {
+
+            return this;
+
+        }
+
+        public override Person addBirthday(DateTime birthday)
+        {
+
+            return this;
+
+        }
+
+        public override Person addImage(Image image)
+        {
+
+            return this;
+
+        }
+
+    }
 
 }

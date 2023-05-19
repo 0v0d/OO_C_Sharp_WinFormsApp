@@ -80,6 +80,32 @@ namespace OO_C_Sharp_WinFormsApp
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref='System.Drawing.Point'/> class with the specified coordinates.
+        /// </summary>
+        public PersonPanel setLocation(int x, int y)
+        {
+
+            // 表示位置を指定する
+            Location = new Point(x, y);
+
+            return this;
+
+        }
+
+        /// <summary>
+        ///  Brings this control to the front of the zorder.
+        /// </summary>
+        public PersonPanel bringToFront()
+        {
+
+            // 最前面に配置する
+            BringToFront();
+
+            return this;
+
+        }
+
+        /// <summary>
         /// idLabel
         /// </summary>
         /// <returns></returns>
