@@ -16,23 +16,9 @@ namespace OO_C_Sharp_WinFormsApp
             ApplicationConfiguration.Initialize();
 
             /*
-             * FatPerson
+             * システム起動時のフォーム
              */
-            Application.Run(new FatPerson(
-                // int id
-                1,
-                // String familyName
-                "三木",
-                // String name
-                "崇行",
-                // int yearOfBirth
-                1969,
-                // int monthOfBirth
-                12,
-                // int dayOfBirth
-                18,
-                // Image image
-                Properties.Resources.image_01_60x80));
+            Application.Run(new PersonForm());
 
         }
 
