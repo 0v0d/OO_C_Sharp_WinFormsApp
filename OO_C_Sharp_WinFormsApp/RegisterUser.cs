@@ -10,180 +10,177 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OO_C_Sharp_WinFormsApp
-{
+namespace OO_C_Sharp_WinFormsApp {
 
-    /// <summary>
-    /// 利用者登録
-    /// </summary>
-    public partial class RegisterUser : Form
-    {
+	/// <summary>
+	/// 利用者登録
+	/// </summary>
+	public partial class RegisterUser : Form {
 
-        private Place place = NullPlace.get();
-        private Person person = NullPerson.get();
-        private PlaceRegister placeRegister = NullPersonPlaceRegister.get();
-        private Status status = new Status();
+		private Place place = NullPlace.get();
+		private Person person = NullPerson.get();
+		private PlaceRegister placeRegister = NullPersonPlaceRegister.get();
+		private Status status = new Status();
 
-        public RegisterUser(Place place)
-        {
+		public RegisterUser(Place place)
+		{
 
-            Debug.Assert(place != null);
+			Debug.Assert(place != null);
 
-            this.place = place;
+			this.place = place;
 
-            Debug.Assert(this.place != null);
+			Debug.Assert(this.place != null);
 
-            InitializeComponent();
+			InitializeComponent();
 
-            Text = "利用者登録";
+			Text = "利用者登録";
 
-        }
+		}
 
-        /// <summary>
-        ///  Makes the control display by setting the visible property to true
-        /// </summary>
-        public virtual RegisterUser show()
-        {
+		/// <summary>
+		///  Makes the control display by setting the visible property to true
+		/// </summary>
+		public virtual RegisterUser show()
+		{
 
-            if (person is NullObject)
-            {
+			if (person is NullObject)
+			{
 
-                // 編集中でなければ新規に利用者を作成する
-                Controls.Add(new PersonPanel(person = new ExtendedPerson()));
+				// 編集中でなければ新規に利用者を作成する
+				Controls.Add(new PersonPanel(person = new ExtendedPerson()));
 
-                // データ登録用のオブジェクトを生成する
-                placeRegister = new PersonPlaceRegister(place, person).setStatus(status.addValue(SaveStatus.Temporary));
+				// データ登録用のオブジェクトを生成する
+				placeRegister = new PersonPlaceRegister(place, person).setStatus(status.addValue(SaveStatus.Temporary));
 
-            }
+			}
 
-            // 表示する
-            Show();
+			// 表示する
+			Show();
 
-            return this;
+			return this;
 
-        }
+		}
 
-        /// <summary>
-        ///  Brings this control to the front of the zorder.
-        /// </summary>
-        public virtual RegisterUser bringToFront()
-        {
+		/// <summary>
+		///  Brings this control to the front of the zorder.
+		/// </summary>
+		public virtual RegisterUser bringToFront()
+		{
 
-            // 最前面に配置する
-            BringToFront();
+			// 最前面に配置する
+			BringToFront();
 
-            return this;
+			return this;
 
-        }
+		}
 
-        /// <summary>
-        /// 一時保存
-        /// </summary>
-        /// <returns></returns>
-        public virtual RegisterUser save()
-        {
+		/// <summary>
+		/// 一時保存
+		/// </summary>
+		/// <returns></returns>
+		public virtual RegisterUser save()
+		{
 
-            place.add(placeRegister);
+			place.add(placeRegister);
 
-            return this;
+			return this;
 
-        }
+		}
 
-        /// <summary>
-        /// 登録
-        /// </summary>
-        /// <returns></returns>
-        public virtual RegisterUser register()
-        {
+		/// <summary>
+		/// 登録
+		/// </summary>
+		/// <returns></returns>
+		public virtual RegisterUser register()
+		{
 
-            place.add(placeRegister.setStatus(status.addValue(SaveStatus.Complete)));
+			place.add(placeRegister.setStatus(status.addValue(SaveStatus.Complete)));
 
-            return this;
+			return this;
 
-        }
+		}
 
-        /// <summary>
-        /// 登録終了
-        /// </summary>
-        /// <returns></returns>
-        public virtual RegisterUser finish()
-        {
+		/// <summary>
+		/// 登録終了
+		/// </summary>
+		/// <returns></returns>
+		public virtual RegisterUser finish()
+		{
 
-            Controls.RemoveAt(0);
+			Controls.RemoveAt(0);
 
-            person = NullPerson.get();
+			person = NullPerson.get();
 
-            return hide();
+			return hide();
 
-        }
+		}
 
-        /// <summary>
-        ///  Hides the control by setting the visible property to false;
-        /// </summary>
-        public virtual RegisterUser hide()
-        {
+		/// <summary>
+		///  Hides the control by setting the visible property to false;
+		/// </summary>
+		public virtual RegisterUser hide()
+		{
 
-            // 非表示にする
-            Hide();
+			// 非表示にする
+			Hide();
 
-            return this;
+			return this;
 
-        }
+		}
 
-    }
+	}
 
-    public class NullRegisterUser : RegisterUser, NullObject
-    {
+	public class NullRegisterUser : RegisterUser, NullObject {
 
-        private static RegisterUser registerUser = new NullRegisterUser();
+		private static RegisterUser registerUser = new NullRegisterUser();
 
-        private NullRegisterUser() : base(NullPlace.get())
-        {
+		private NullRegisterUser() : base(NullPlace.get())
+		{
 
-        }
+		}
 
-        public static RegisterUser get()
-        {
+		public static RegisterUser get()
+		{
 
-            return registerUser;
+			return registerUser;
 
-        }
+		}
 
-        public override RegisterUser show()
-        {
+		public override RegisterUser show()
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-        public override RegisterUser bringToFront()
-        {
+		public override RegisterUser bringToFront()
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-        public override RegisterUser register()
-        {
+		public override RegisterUser register()
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-        public override RegisterUser finish()
-        {
+		public override RegisterUser finish()
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-        public override RegisterUser hide()
-        {
+		public override RegisterUser hide()
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-    }
+	}
 
 }

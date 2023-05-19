@@ -5,75 +5,70 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OO_C_Sharp_WinFormsApp
-{
+namespace OO_C_Sharp_WinFormsApp {
 
-    public class Status
-    {
+	public class Status {
 
-        private Enum value = BasicStatus.None;
+		private Enum value = BasicStatus.None;
 
-        public Status()
-        {
+		public Status()
+		{
 
-        }
+		}
 
-        public Enum getValue()
-        {
+		public Enum getValue()
+		{
 
-            return value;
+			return value;
 
-        }
+		}
 
-        public virtual Status addValue(Enum value)
-        {
+		public virtual Status addValue(Enum value)
+		{
 
-            Debug.Assert(value != null);
+			Debug.Assert(value != null);
 
-            this.value = value;
+			this.value = value;
 
-            Debug.Assert(this.value != null);
+			Debug.Assert(this.value != null);
 
-            return this;
+			return this;
 
-        }
+		}
 
-    }
+	}
 
-    public class NullStatus : Status, NullObject
-    {
+	public class NullStatus : Status, NullObject {
 
-        private static Status status = new NullStatus();
+		private static Status status = new NullStatus();
 
-        public static Status get()
-        {
+		public static Status get()
+		{
 
-            return status;
+			return status;
 
-        }
+		}
 
-        public override Status addValue(Enum value)
-        {
+		public override Status addValue(Enum value)
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-    }
+	}
 
-    public enum BasicStatus
-    {
+	public enum BasicStatus {
 
-        None,
+		None,
 
-    }
+	}
 
-    public enum SaveStatus
-    {
+	public enum SaveStatus {
 
-        Temporary,
-        Complete,
+		Temporary,
+		Complete,
 
-    }
+	}
 
 }

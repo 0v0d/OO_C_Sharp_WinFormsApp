@@ -5,51 +5,75 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OO_C_Sharp_WinFormsApp
-{
+namespace OO_C_Sharp_WinFormsApp {
 
-    public abstract class BaseLabel : Label
-    {
+	public abstract class BaseLabel : Label {
 
-        public BaseLabel()
-        {
+		public BaseLabel()
+		{
 
-            AutoSize = true;
-            TabStop = false;
+			AutoSize = true;
+			TabStop = false;
 
-        }
+		}
 
-        public Label setLocation(int x, int y)
-        {
+		public Label setLocation(int x, int y)
+		{
 
-            // 表示位置を指定する
-            Location = new Point(x, y);
+			// 表示位置を指定する
+			Location = new Point(x, y);
 
-            return this;
+			return this;
 
-        }
+		}
 
-    }
+	}
 
-    internal class PersonIdLabel : BaseLabel
-    {
+	public class PersonIdLabel : BaseLabel, IObserver {
 
-        private Person person;
+		private Person person;
 
-        public PersonIdLabel(Person person)
-        {
+		public PersonIdLabel(Person person)
+		{
 
-            Debug.Assert(person != null);
+			Debug.Assert(person != null);
 
-            this.person = person;
+			this.person = person;
 
-            Debug.Assert(this.person != null);
+			Debug.Assert(this.person != null);
 
-            Name = "id";
-            Text = this.person.getId().ToString();
+			Name = "id";
+			Update();
 
-        }
+		}
 
-    }
+		public void Update()
+		{
+			Text = this.person.getId().ToString();
+		}
+	}
 
+	public class PersonNameLabel : BaseLabel, IObserver {
+
+		private Person person;
+
+		public PersonNameLabel(Person person)
+		{
+
+			Debug.Assert(person != null);
+
+			this.person = person;
+
+			Debug.Assert(this.person != null);
+
+			Name = "name";
+			Update();
+
+		}
+
+		public void Update()
+		{
+			Text = person.getName();
+		}
+	}
 }

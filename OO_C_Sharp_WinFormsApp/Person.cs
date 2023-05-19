@@ -5,526 +5,524 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OO_C_Sharp_WinFormsApp
-{
-
-    public interface Person
-    {
-
-        /// <summary>
-        /// IDを返します。
-        /// </summary>
-        /// <returns></returns>
-        int getId();
-
-        /// <summary>
-        /// 姓を返します。
-        /// </summary>
-        /// <returns></returns>
-        String getFamilyName();
-
-        Person addFamilyName(String familyName);
-
-        /// <summary>
-        /// 名を返します。
-        /// </summary>
-        /// <returns></returns>
-        String getName();
-
-        Person addName(String name);
-
-        /// <summary>
-        /// フルネームを返します。
-        /// </summary>
-        /// <returns></returns>
-        String fullName();
-
-        /// <summary>
-        /// 誕生日を返します。
-        /// </summary>
-        /// <returns></returns>
-        DateTime getBirthday();
-
-        Person addBirthday(DateTime birthday);
-
-        /// <summary>
-        /// 年齢を返します。
-        /// </summary>
-        /// <returns></returns>
-        int age();
-
-        /// <summary>
-        /// イメージを返します。
-        /// </summary>
-        /// <returns></returns>
-        Image getImage();
-
-        Person addImage(Image image);
-
-    }
-
-    /// <summary>
-    /// 単一責務な『人』オブジェクトです。
-    /// </summary>
-    public class PersonModel : Person
-    {
-
-        /// <summary>
-        /// ID
-        /// </summary>
-        private int id;
-
-        /// <summary>
-        /// 姓
-        /// </summary>
-        private String familyName;
-
-        /// <summary>
-        /// 名
-        /// </summary>
-        private String name;
-
-        /// <summary>
-        /// 誕生日
-        /// </summary>
-        private DateTime birthday;
-
-        /// <summary>
-        /// イメージ
-        /// </summary>
-        private Image image;
-
-        /// <summary>
-        /// デフォルトのコンストラクタです。
-        /// </summary>
-        public PersonModel()
-        {
-
-            /*
-             * ID
-             */
-            addId(0);
+namespace OO_C_Sharp_WinFormsApp {
+
+	public interface Person {
+
+		/// <summary>
+		/// IDを返します。
+		/// </summary>
+		/// <returns></returns>
+		int getId();
+		Person addId(int id);
+		/// <summary>
+		/// 姓を返します。
+		/// </summary>
+		/// <returns></returns>
+		String getFamilyName();
+
+		Person addFamilyName(String familyName);
+
+
+		/// <summary>
+		/// 名を返します。
+		/// </summary>
+		/// <returns></returns>
+		String getName();
+
+		Person addName(String name);
+
+		/// <summary>
+		/// フルネームを返します。
+		/// </summary>
+		/// <returns></returns>
+		String fullName();
+
+		/// <summary>
+		/// 誕生日を返します。
+		/// </summary>
+		/// <returns></returns>
+		DateTime getBirthday();
+
+		Person addBirthday(DateTime birthday);
+
+		/// <summary>
+		/// 年齢を返します。
+		/// </summary>
+		/// <returns></returns>
+		int age();
+
+		/// <summary>
+		/// イメージを返します。
+		/// </summary>
+		/// <returns></returns>
+		Image getImage();
+
+		Person addImage(Image image);
+
+	}
+
+	/// <summary>
+	/// 単一責務な『人』オブジェクトです。
+	/// </summary>
+	public class PersonModel : Person {
+
+		/// <summary>
+		/// ID
+		/// </summary>
+		private int id;
+
+		/// <summary>
+		/// 姓
+		/// </summary>
+		private String familyName;
+
+		/// <summary>
+		/// 名
+		/// </summary>
+		private String name;
+
+		/// <summary>
+		/// 誕生日
+		/// </summary>
+		private DateTime birthday;
+
+		/// <summary>
+		/// イメージ
+		/// </summary>
+		private Image image;
+
+		/// <summary>
+		/// デフォルトのコンストラクタです。
+		/// </summary>
+		public PersonModel()
+		{
 
-            /*
-             * 姓
-             */
-            addFamilyName("");
+			/*
+			 * ID
+			 */
+			addId(0);
 
-            /*
-             * 名
-             */
-            addName("");
+			/*
+			 * 姓
+			 */
+			addFamilyName("");
 
-            /*
-             * 誕生日
-             */
-            addBirthday(DateTime.Today);
+			/*
+			 * 名
+			 */
+			addName("");
 
-            /*
-             * イメージ
-             */
-            addImage(Properties.Resources.noImage_60x80);
+			/*
+			 * 誕生日
+			 */
+			addBirthday(DateTime.Today);
 
-        }
+			/*
+			 * イメージ
+			 */
+			addImage(Properties.Resources.noImage_60x80);
 
-        /// <summary>
-        /// コンストラクタです。
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="familyName"></param>
-        /// <param name="name"></param>
-        /// <param name="yearOfBirth"></param>
-        /// <param name="monthOfBirth"></param>
-        /// <param name="dayOfBirth"></param>
-        /// <param name="image"></param>
-        public PersonModel(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
-        {
+		}
 
-            /*
-             * ID
-             */
-            addId(id);
+		/// <summary>
+		/// コンストラクタです。
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="familyName"></param>
+		/// <param name="name"></param>
+		/// <param name="yearOfBirth"></param>
+		/// <param name="monthOfBirth"></param>
+		/// <param name="dayOfBirth"></param>
+		/// <param name="image"></param>
+		public PersonModel(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
+		{
 
-            /*
-             * 姓
-             */
-            addFamilyName(familyName);
+			/*
+			 * ID
+			 */
+			addId(id);
 
-            /*
-             * 名
-             */
-            addName(name);
+			/*
+			 * 姓
+			 */
+			addFamilyName(familyName);
 
-            /*
-             * 誕生日
-             */
-            addBirthday(new DateTime(yearOfBirth, monthOfBirth, dayOfBirth, 0, 0, 0));
+			/*
+			 * 名
+			 */
+			addName(name);
 
-            /*
-             * イメージ
-             */
-            addImage(image);
+			/*
+			 * 誕生日
+			 */
+			addBirthday(new DateTime(yearOfBirth, monthOfBirth, dayOfBirth, 0, 0, 0));
 
-        }
+			/*
+			 * イメージ
+			 */
+			addImage(image);
 
-        public int getId()
-        {
 
-            return id;
 
-        }
+		}
 
-        public Person addId(int id)
-        {
+		public int getId()
+		{
 
-            Debug.Assert(id >= 0);
+			return id;
 
-            this.id = id;
+		}
 
-            Debug.Assert(this.id >= 0);
+		public Person addId(int id)
+		{
 
-            return this;
+			Debug.Assert(id >= 0);
 
-        }
+			this.id = id;
 
-        public virtual String getFamilyName()
-        {
+			Debug.Assert(this.id >= 0);
 
-            return familyName;
+			return this;
 
-        }
+		}
 
-        public virtual Person addFamilyName(String familyName)
-        {
+		public virtual String getFamilyName()
+		{
 
-            Debug.Assert(familyName != null);
+			return familyName;
 
-            this.familyName = familyName;
+		}
 
-            Debug.Assert(this.familyName != null);
+		public virtual Person addFamilyName(String familyName)
+		{
 
-            return this;
+			Debug.Assert(familyName != null);
 
-        }
+			this.familyName = familyName;
 
-        public String getName()
-        {
+			Debug.Assert(this.familyName != null);
 
-            return name;
+			return this;
 
-        }
+		}
 
-        public virtual Person addName(String name)
-        {
+		public String getName()
+		{
 
-            Debug.Assert(name != null);
+			return name;
 
-            this.name = name;
+		}
 
-            Debug.Assert(this.name != null);
+		public virtual Person addName(String name)
+		{
 
-            return this;
+			Debug.Assert(name != null);
 
-        }
+			this.name = name;
 
-        public String fullName()
-        {
+			Debug.Assert(this.name != null);
 
-            return getFamilyName() + " " + getName();
+			return this;
 
-        }
+		}
 
-        public DateTime getBirthday()
-        {
+		public String fullName()
+		{
 
-            return birthday;
+			return getFamilyName() + " " + getName();
 
-        }
+		}
 
-        public virtual Person addBirthday(DateTime birthday)
-        {
+		public DateTime getBirthday()
+		{
 
-            Debug.Assert(birthday != null);
+			return birthday;
 
-            this.birthday = birthday;
+		}
 
-            Debug.Assert(this.birthday != null);
+		public virtual Person addBirthday(DateTime birthday)
+		{
 
-            return this;
+			Debug.Assert(birthday != null);
 
-        }
+			this.birthday = birthday;
 
-        public int age()
-        {
+			Debug.Assert(this.birthday != null);
 
-            int age = DateTime.Today.Year - getBirthday().Year;
+			return this;
 
-            // 誕生日前であれば年齢から 1 を引く
-            if (DateTime.Today.Month.CompareTo(getBirthday().Month) < 0
-                || DateTime.Today.Month.Equals(getBirthday().Month) && DateTime.Today.Day.CompareTo(getBirthday().Day) < 0)
-            {
+		}
 
-                age--;
+		public int age()
+		{
 
-            }
+			int age = DateTime.Today.Year - getBirthday().Year;
 
-            return age;
+			// 誕生日前であれば年齢から 1 を引く
+			if (DateTime.Today.Month.CompareTo(getBirthday().Month) < 0
+					|| DateTime.Today.Month.Equals(getBirthday().Month) && DateTime.Today.Day.CompareTo(getBirthday().Day) < 0)
+			{
 
-        }
+				age--;
 
-        public virtual Image getImage()
-        {
+			}
 
-            return image;
+			return age;
 
-        }
+		}
 
-        public virtual Person addImage(Image image)
-        {
+		public virtual Image getImage()
+		{
 
-            Debug.Assert(image != null);
+			return image;
 
-            this.image = image;
+		}
 
-            Debug.Assert(this.image != null);
+		public virtual Person addImage(Image image)
+		{
 
-            return this;
+			Debug.Assert(image != null);
 
-        }
+			this.image = image;
 
-    }
+			Debug.Assert(this.image != null);
 
-    public class NullPerson : PersonModel, NullObject
-    {
+			return this;
 
-        private static Person person = new NullPerson();
+		}
 
-        private NullPerson()
-        {
+	}
 
-            /*
-             * スーパークラスの値追加メソッドがオーバーライドされているため、
-             * 直接スーパークラスのメソッドを発効する。
-             */
+	public class NullPerson : PersonModel, NullObject {
 
-            /*
-             * 姓
-             */
-            base.addFamilyName("");
+		private static Person person = new NullPerson();
 
-            /*
-             * 名
-             */
-            base.addName("");
+		private NullPerson()
+		{
 
-            /*
-             * 誕生日
-             */
-            base.addBirthday(DateTime.Today);
+			/*
+			 * スーパークラスの値追加メソッドがオーバーライドされているため、
+			 * 直接スーパークラスのメソッドを発効する。
+			 */
 
-            /*
-             * イメージ
-             */
-            base.addImage(Properties.Resources.noImage_60x80);
+			/*
+			 * 姓
+			 */
+			base.addFamilyName("");
 
-        }
+			/*
+			 * 名
+			 */
+			base.addName("");
 
-        public static Person get()
-        {
+			/*
+			 * 誕生日
+			 */
+			base.addBirthday(DateTime.Today);
 
-            return person;
+			/*
+			 * イメージ
+			 */
+			base.addImage(Properties.Resources.noImage_60x80);
 
-        }
+		}
 
-        public override Person addFamilyName(String familyName)
-        {
+		public static Person get()
+		{
 
-            return this;
+			return person;
 
-        }
+		}
 
-        public override Person addName(String name)
-        {
+		public override Person addFamilyName(String familyName)
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-        public override Person addBirthday(DateTime birthday)
-        {
+		public override Person addName(String name)
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-        public override Person addImage(Image image)
-        {
+		public override Person addBirthday(DateTime birthday)
+		{
 
-            return this;
+			return this;
 
-        }
+		}
 
-    }
+		public override Person addImage(Image image)
+		{
 
-    public class ExtendedPerson : PersonModel
-    {
+			return this;
 
-        private List<Family> historyOfFamily = new List<Family>();
-        private Visual visual = NullVisual.get();
+		}
 
-        public ExtendedPerson()
-        {
+	}
 
-        }
+	public class ExtendedPerson : PersonModel {
 
-        public ExtendedPerson(int id, Family family, String name, DateTime birthday, Visual visual)
-        {
+		private List<Family> historyOfFamily = new List<Family>();
+		private Visual visual = NullVisual.get();
 
-            /*
-             * ID
-             */
-            addId(id);
+		public ExtendedPerson()
+		{
 
-            /*
-             * 姓
-             */
-            addFamily(family);
+		}
 
-            /*
-             * 名
-             */
-            addName(name);
+		public ExtendedPerson(int id, Family family, String name, DateTime birthday, Visual visual)
+		{
 
-            /*
-             * 誕生日
-             */
-            addBirthday(birthday);
+			/*
+			 * ID
+			 */
+			addId(id);
 
-            /*
-             * イメージ
-             */
-            addVisual(visual);
+			/*
+			 * 姓
+			 */
+			addFamily(family);
 
-        }
+			/*
+			 * 名
+			 */
+			addName(name);
 
-        public ExtendedPerson(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
-            : base(id, familyName, name, yearOfBirth, monthOfBirth, dayOfBirth, image)
-        {
+			/*
+			 * 誕生日
+			 */
+			addBirthday(birthday);
 
-        }
+			/*
+			 * イメージ
+			 */
+			addVisual(visual);
 
-        public override String getFamilyName()
-        {
+		}
 
-            return getFamily().getName();
+		public ExtendedPerson(int id, String familyName, String name, int yearOfBirth, int monthOfBirth, int dayOfBirth, Image image)
+				: base(id, familyName, name, yearOfBirth, monthOfBirth, dayOfBirth, image)
+		{
 
-        }
+		}
 
-        public override Person addFamilyName(String familyName)
-        {
+		public override String getFamilyName()
+		{
 
-            Debug.Assert(familyName != null);
-            
-            if (familyName.Length > 0)
-            {
+			return getFamily().getName();
 
-                addFamily(new FamilyModel(familyName));
+		}
 
-                Debug.Assert(getFamily() is not NullObject);
-                Debug.Assert(getFamilyName().Equals(familyName));
+		public override Person addFamilyName(String familyName)
+		{
 
-            }
+			Debug.Assert(familyName != null);
 
-            return this;
+			if (familyName.Length > 0)
+			{
 
-        }
+				addFamily(new FamilyModel(familyName));
 
-        public Family getFamily()
-        {
+				Debug.Assert(getFamily() is not NullObject);
+				Debug.Assert(getFamilyName().Equals(familyName));
 
-            if (historyOfFamily.Count > 0)
-            {
+			}
 
-                // 最新の家族を返す
-                return historyOfFamily.Last();
+			return this;
 
-            }
+		}
 
-            return NullFamily.get();
+		public Family getFamily()
+		{
 
-        }
+			if (historyOfFamily.Count > 0)
+			{
 
-        public Person addFamily(Family family)
-        {
+				// 最新の家族を返す
+				return historyOfFamily.Last();
 
-            Debug.Assert(family != null);
+			}
 
-            /*
-             * 家族にふさわしいかどうかを決めることができる
-             */
-            if (family is not NullObject)
-            {
+			return NullFamily.get();
 
-                historyOfFamily.Add(family.addPerson(this));
+		}
 
-                Debug.Assert(getFamily().Equals(family));
+		public Person addFamily(Family family)
+		{
 
-            }
+			Debug.Assert(family != null);
 
-            return this;
+			/*
+			 * 家族にふさわしいかどうかを決めることができる
+			 */
+			if (family is not NullObject)
+			{
 
-        }
+				historyOfFamily.Add(family.addPerson(this));
 
-        public override Image getImage()
-        {
+				Debug.Assert(getFamily().Equals(family));
 
-            return getVisual().getImage();
+			}
 
-        }
+			return this;
 
-        public override Person addImage(Image image)
-        {
+		}
 
-            Debug.Assert(image != null);
+		public override Image getImage()
+		{
 
-            addVisual(new VisualModel(image));
+			return getVisual().getImage();
 
-            Debug.Assert(getVisual() is not NullObject);
-            Debug.Assert(getImage().Equals(image));
+		}
 
-            return this;
+		public override Person addImage(Image image)
+		{
 
-        }
+			Debug.Assert(image != null);
 
-        public Visual getVisual()
-        {
+			addVisual(new VisualModel(image));
 
-            return visual;
+			Debug.Assert(getVisual() is not NullObject);
+			Debug.Assert(getImage().Equals(image));
 
-        }
+			return this;
 
-        public Person addVisual(Visual visual)
-        {
+		}
 
-            Debug.Assert(visual != null);
+		public Visual getVisual()
+		{
 
-            /*
-             * イメージ通りかどうかを決めることができる
-             * 
-             */
-            if (visual is not NullObject)
-            {
+			return visual;
 
-                this.visual = visual.addPerson(this);
+		}
 
-                Debug.Assert(getVisual().Equals(visual));
+		public Person addVisual(Visual visual)
+		{
 
-            }
+			Debug.Assert(visual != null);
 
-            return this;
+			/*
+			 * イメージ通りかどうかを決めることができる
+			 * 
+			 */
+			if (visual is not NullObject)
+			{
 
-        }
+				this.visual = visual.addPerson(this);
 
-    }
+				Debug.Assert(getVisual().Equals(visual));
+
+			}
+
+			return this;
+
+		}
+
+	}
 
 }
